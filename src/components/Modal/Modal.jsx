@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 
 export const Modal = props => {
 
-  function handleKeyDown(e) {
-    if (e.code === 'Escape') {
-      props.onClick(e);
-    }
-  }
-
+  
   useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.code === 'Escape') {
+        props.onClick(e);
+      }
+    }
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [props]);
 
   const { imageUrl, onClick } = props;
   return (
